@@ -1,0 +1,311 @@
+/* Estilos para el modal de configuraciones */
+.settings-content {
+  padding: 24px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.settings-section {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--md-outline-variant);
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.settings-section h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--md-on-surface);
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-section h3::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(45deg, var(--md-primary), var(--md-tertiary));
+  border-radius: 2px;
+}
+
+/* Range inputs */
+.range-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.range-input input[type="range"] {
+  flex: 1;
+  height: 6px;
+  background: var(--md-outline-variant);
+  border-radius: 3px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.range-input input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--md-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all var(--md-motion-duration-short2);
+}
+
+.range-input input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--md-primary-container);
+  transform: scale(1.1);
+}
+
+.range-input input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--md-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.range-value {
+  min-width: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--md-primary);
+  text-align: center;
+  background: var(--md-primary-container);
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+/* Checkboxes personalizados */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--md-on-surface);
+  margin-bottom: 0;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--md-outline);
+  border-radius: 4px;
+  position: relative;
+  transition: all var(--md-motion-duration-short2);
+  background: var(--md-surface);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: var(--md-primary);
+  border-color: var(--md-primary);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--md-on-primary);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Vista previa del terminal */
+.terminal-preview {
+  background: var(--terminal-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--md-elevation-2);
+  font-family: var(--preview-font-family, 'JetBrains Mono', monospace);
+}
+
+.preview-header {
+  background: var(--md-surface-container);
+  color: var(--md-on-surface-variant);
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--md-outline-variant);
+}
+
+.preview-content {
+  padding: 16px;
+  font-size: var(--preview-font-size, 15px);
+  line-height: var(--preview-line-height, 1.2);
+  background: var(--terminal-bg);
+  color: var(--terminal-fg);
+  min-height: 120px;
+}
+
+.preview-line {
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.preview-prompt {
+  color: #58a6ff;
+  margin-right: 8px;
+}
+
+.preview-command {
+  color: #f5f543;
+}
+
+.preview-output {
+  color: #e5e5e5;
+}
+
+.preview-success {
+  color: #23d18b;
+}
+
+.preview-cursor {
+  color: var(--terminal-cursor);
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Responsive para configuraciones */
+@media (max-width: 768px) {
+  .settings-content {
+    padding: 16px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .range-input {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  
+  .range-value {
+    align-self: center;
+  }
+}
+
+/* Animaciones de transición */
+.settings-section {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos para diferentes temas del terminal */
+.terminal-preview.theme-monokai {
+  --terminal-bg: #272822;
+  --terminal-fg: #f8f8f2;
+}
+
+.terminal-preview.theme-solarized-dark {
+  --terminal-bg: #002b36;
+  --terminal-fg: #839496;
+}
+
+.terminal-preview.theme-solarized-light {
+  --terminal-bg: #fdf6e3;
+  --terminal-fg: #657b83;
+}
+
+.terminal-preview.theme-tomorrow-night {
+  --terminal-bg: #1d1f21;
+  --terminal-fg: #c5c8c6;
+}
+
+.terminal-preview.theme-dracula {
+  --terminal-bg: #282a36;
+  --terminal-fg: #f8f8f2;
+}
+
+/* Estados de los controles */
+select:focus,
+input[type="range"]:focus {
+  outline: 2px solid var(--md-primary);
+  outline-offset: 2px;
+}
+
+.checkbox-label:hover .checkmark {
+  border-color: var(--md-primary);
+  box-shadow: 0 0 0 2px rgba(103, 80, 164, 0.1);
+}
+
+/* Indicadores de cambios no guardados */
+.settings-section.modified h3::after {
+  content: '●';
+  color: var(--md-primary);
+  margin-left: 8px;
+  font-size: 12px;
+}
+
+/* Tooltips para configuraciones */
+.setting-tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.setting-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--md-surface-container-highest);
+  color: var(--md-on-surface);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--md-motion-duration-short2);
+  box-shadow: var(--md-elevation-2);
+  z-index: 1000;
+}
+
+.setting-tooltip:hover::after {
+  opacity: 1;
+}

@@ -1,0 +1,60 @@
+{
+  "name": "ssh-client-pro",
+  "version": "1.0.0",
+  "description": "Cliente SSH gráfico multiplataforma con interfaz moderna",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+    "pack": "electron-builder --dir",
+    "install-deps": "npm install"
+  },
+  "keywords": [
+    "ssh",
+    "terminal",
+    "electron",
+    "nodejs"
+  ],
+  "author": "SSH Client Pro",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "dependencies": {
+    "@material/web": "^1.0.1",
+    "dragula": "^3.7.3",
+    "electron-store": "^8.1.0",
+    "ssh2": "^1.15.0",
+    "start": "^5.1.0",
+    "uuid": "^9.0.1",
+    "xterm": "^5.3.0",
+    "xterm-addon-fit": "^0.8.0",
+    "xterm-addon-unicode11": "^0.6.0",
+    "xterm-addon-web-links": "^0.9.0"
+  },
+  "build": {
+    "appId": "com.sshclientpro.app",
+    "productName": "SSH Client Pro",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}

@@ -1,0 +1,313 @@
+/* Estilos específicos del terminal */
+.terminal-container {
+  height: 100%;
+  background-color: var(--terminal-bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  background-color: var(--md-surface-container);
+  border-bottom: 1px solid var(--md-outline-variant);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+}
+
+.terminal-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--md-on-surface-variant);
+}
+
+.terminal-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.terminal-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal {
+  width: 100%;
+  height: 100%;
+  background-color: var(--terminal-bg);
+}
+
+/* Configuración específica de XTerm */
+.xterm {
+  background-color: var(--terminal-bg) !important;
+  color: var(--terminal-fg) !important;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', 'Consolas', 
+               'DejaVu Sans Mono', 'Ubuntu Mono', monospace !important;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.2;
+  cursor: text;
+  font-feature-settings: 'liga' 1, 'calt' 1;
+  font-variant-ligatures: contextual;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.xterm-viewport {
+  background-color: var(--terminal-bg) !important;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-outline-variant) transparent;
+}
+
+.xterm-viewport::-webkit-scrollbar {
+  width: 8px;
+}
+
+.xterm-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.xterm-viewport::-webkit-scrollbar-thumb {
+  background: var(--md-outline-variant);
+  border-radius: 4px;
+}
+
+.xterm-viewport::-webkit-scrollbar-thumb:hover {
+  background: var(--md-outline);
+}
+
+.xterm-screen {
+  background-color: var(--terminal-bg) !important;
+}
+
+.xterm-cursor-layer .xterm-cursor {
+  background-color: var(--terminal-cursor) !important;
+  color: var(--terminal-bg) !important;
+}
+
+.xterm-selection-layer .xterm-selection {
+  background-color: var(--terminal-selection) !important;
+}
+
+/* Colores ANSI personalizados */
+.xterm-color-0 { color: #000000; }  /* Negro */
+.xterm-color-1 { color: #cd3131; }  /* Rojo */
+.xterm-color-2 { color: #0dbc79; }  /* Verde */
+.xterm-color-3 { color: #e5e510; }  /* Amarillo */
+.xterm-color-4 { color: #2472c8; }  /* Azul */
+.xterm-color-5 { color: #bc3fbc; }  /* Magenta */
+.xterm-color-6 { color: #11a8cd; }  /* Cian */
+.xterm-color-7 { color: #e5e5e5; }  /* Blanco */
+
+.xterm-color-8 { color: #666666; }  /* Negro brillante */
+.xterm-color-9 { color: #f14c4c; }  /* Rojo brillante */
+.xterm-color-10 { color: #23d18b; } /* Verde brillante */
+.xterm-color-11 { color: #f5f543; } /* Amarillo brillante */
+.xterm-color-12 { color: #3b8eea; } /* Azul brillante */
+.xterm-color-13 { color: #d670d6; } /* Magenta brillante */
+.xterm-color-14 { color: #29b8db; } /* Cian brillante */
+.xterm-color-15 { color: #e5e5e5; } /* Blanco brillante */
+
+/* Colores de fondo ANSI */
+.xterm-bg-color-0 { background-color: #000000; }
+.xterm-bg-color-1 { background-color: #cd3131; }
+.xterm-bg-color-2 { background-color: #0dbc79; }
+.xterm-bg-color-3 { background-color: #e5e510; }
+.xterm-bg-color-4 { background-color: #2472c8; }
+.xterm-bg-color-5 { background-color: #bc3fbc; }
+.xterm-bg-color-6 { background-color: #11a8cd; }
+.xterm-bg-color-7 { background-color: #e5e5e5; }
+
+/* Enlaces web */
+.xterm-link-layer a {
+  color: #58a6ff !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.xterm-link-layer a:hover {
+  color: #79c0ff !important;
+  text-decoration: none;
+}
+
+/* Indicador de conexión en el terminal */
+.terminal-status {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  background-color: var(--md-surface-container-highest);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.9;
+  transition: opacity var(--md-motion-duration-short2);
+}
+
+.terminal-status:hover {
+  opacity: 1;
+}
+
+/* Overlay de conexión */
+.terminal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: all var(--md-motion-duration-short3);
+}
+
+.terminal-overlay-content {
+  background-color: var(--md-surface-container-highest);
+  padding: 24px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: var(--md-elevation-2);
+}
+
+.terminal-overlay-content .material-symbols-outlined {
+  font-size: 48px;
+  color: var(--md-primary);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.terminal-overlay-content h3 {
+  margin: 0 0 8px;
+  color: var(--md-on-surface);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.terminal-overlay-content p {
+  margin: 0;
+  color: var(--md-on-surface-variant);
+  font-size: 14px;
+}
+
+/* Configuración de fuentes para mejor rendimiento y legibilidad */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+@font-face {
+  font-family: 'FiraCode';
+  src: url('https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/woff2/FiraCode-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FiraCode';
+  src: url('https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/woff2/FiraCode-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Mejoras de rendimiento del terminal */
+.terminal-container {
+  contain: layout style paint;
+  will-change: contents;
+}
+
+.xterm {
+  contain: layout style paint;
+  transform: translateZ(0);
+}
+
+/* Configuración responsive del terminal */
+@media (max-width: 768px) {
+  .xterm {
+    font-size: 13px;
+  }
+  
+  .terminal-header {
+    padding: 6px 12px;
+    min-height: 36px;
+  }
+  
+  .terminal-info {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .xterm {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+  
+  .terminal-status {
+    position: static;
+    margin: 4px 0;
+    align-self: flex-start;
+  }
+}
+
+/* Efectos de enfoque del terminal */
+.terminal-container:focus-within {
+  outline: 2px solid var(--md-primary);
+  outline-offset: -2px;
+}
+
+/* Animaciones de estado del terminal */
+.terminal-connecting .terminal-overlay-content .loading-spinner {
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+.terminal-error .terminal-overlay {
+  background-color: rgba(186, 26, 26, 0.1);
+}
+
+.terminal-error .terminal-overlay-content {
+  border: 1px solid var(--md-error);
+}
+
+/* Mejoras de accesibilidad */
+.xterm-accessibility {
+  background-color: var(--terminal-bg) !important;
+  color: var(--terminal-fg) !important;
+}
+
+.xterm-accessibility-tree {
+  background-color: var(--terminal-bg) !important;
+  color: var(--terminal-fg) !important;
+}
+
+/* Configuración para soporte Unicode */
+.xterm-unicode-width-test {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', 'Consolas', monospace;
+}
+
+/* Estilos para caracteres especiales y emojis */
+.xterm-wide-char {
+  display: inline-block;
+  width: 2ch;
+}
+
+/* Soporte para iconos de Nerd Fonts */
+.xterm-nerd-font {
+  font-family: 'JetBrains Mono Nerd Font', 'FiraCode Nerd Font', 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Configuración de colores para diferentes shells */
+.shell-zsh .xterm-color-prompt { color: #58a6ff; }
+.shell-bash .xterm-color-prompt { color: #0dbc79; }
+.shell-fish .xterm-color-prompt { color: #f5f543; }
+.shell-powershell .xterm-color-prompt { color: #2472c8; }
